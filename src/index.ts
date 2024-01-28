@@ -2,11 +2,11 @@ import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import session from 'express-session'
 import './models'
+import {config} from "./config"
 
 import "./passport-config"
 import api from "./routes"
 
-const port = process.env.PORT || 3000
 const mongoUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/mondayScaries"
 
 mongoose.connect(mongoUrl)
@@ -36,6 +36,6 @@ app.use(passport.session());
 
 app.use("/api", api)
 
-app.listen(port, () => {
+app.listen(config.server.port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
