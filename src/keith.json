@@ -1,0 +1,58 @@
+[
+    {
+        "contestDate": "1/5/2024",
+        "betType": "Prop",
+        "description": "Cade Cunningham o37.5 pts+rebounds+assists",
+        "sport": "NBA",
+        "amount": 1,
+        "odds": -118,
+        "result": "Win"
+    },
+    {
+        "contestDate": "1/5/2024",
+        "betType": "Prop",
+        "sport": "NBA",
+        "description": "Desmond Bane o22.5 pts",
+        "amount": 1,
+        "odds": -119,
+        "result": "Win"
+    },
+    {
+        "contestDate": "1/5/2024",
+        "betType": "Parlay",
+        "sport": "NBA",
+        "description": "ML parlay: Pacers, Celtics, Twolves, Lakers",
+        "amount": 1,
+        "odds": 359,
+        "result": "Loss"
+    },
+    {
+        "contestDate": "1/6/2024",
+        "sport": "NFL",
+        "betType": "Parlay",
+        "description": "Texans ML, O47",
+        "amount": 5,
+        "odds": 236,
+        "result": "Loss"
+    },
+    {
+        "contestDate": "1/6/2024",
+        "sport": "NBA",
+        "betType": "Against the Spread",
+        "amount": 10,
+        "odds": -120,
+        "live": true,
+        "result": "Loss",
+        "description": "Bucs +1"
+    },
+    {
+        "contestDate": "1/21/2024",
+        "betType": "Parlay",
+        "sport": "NFL",
+        "amount": 1.02,
+        "odds": 917,
+        "cashoutValue": 5.33,
+        "result": "Cash Out",
+        "description": "NFL playoff parlay"
+    }
+]

@@ -1,0 +1,41 @@
+import express, { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
+import session from 'express-session'
+import './models'
+
+import "./passport-config"
+import api from "./routes"
+
+const port = process.env.PORT || 3000
+const mongoUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/mondayScaries"
+
+mongoose.connect(mongoUrl)
+
+const app = express();
+
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+
+// For development: Add latency to routes
+// app.use(function(req,res,next){setTimeout(next,2000)})
+
+import passport from 'passport';
+
+// Import to initialize
+import models from "./models"
+
+app.use(session({
+  secret: process.env.EXPRESS_SECRET_KEY || 'your-secret-key',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/api", api)
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

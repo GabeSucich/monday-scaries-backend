@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": false,
+      "esModuleInterop": true,
+      "resolveJsonModule": true,
+    },
+    "exclude": ["./setupDb.ts", "./writeInterfaces.ts", "./node_modules/@types/**"]
+  }
