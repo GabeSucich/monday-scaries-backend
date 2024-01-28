@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build && node dist/index.js",
-
+    "postinstall": "tsc",
     "write-types": "yarn mtgen && npx ts-node writeInterfaces.ts",
     "dev": "yarn write-types && nodemon src/index.ts",
     "build": "tsc"
