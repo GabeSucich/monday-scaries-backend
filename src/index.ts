@@ -37,7 +37,7 @@ app.use(passport.session());
 app.use("/api", api)
 
 app.get("/", (req, res, next) => {
-  res.send("You hit the api!")
+  res.send("You hit the api in dev mode!")
 })
 
 app.listen(config.server.port, () => {
