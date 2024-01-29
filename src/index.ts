@@ -36,6 +36,10 @@ app.use(passport.session());
 
 app.use("/api", api)
 
+app.get("/", (req, res, next) => {
+  res.send("You hit the api!")
+})
+
 app.listen(config.server.port, () => {
   console.log(`Server is running on http://localhost:${config.server.port}`);
 });
