@@ -9,7 +9,6 @@ import data from "./src/keith.json"
 
 async function connectToDb() {
     return await mongoose.connect("mongodb+srv://mondayScaries-user:fQWARBE512jFtRKo@mondayscariesserverless.elhzdmd.mongodb.net/mondayScaries-dev?retryWrites=true&w=majority")
-
 }
 
 async function findUser(): Promise<User> {
@@ -103,5 +102,6 @@ async function main() {
     const bettor = await setupBettors(user)
     await setupWagers(bettor)
 }
+
 
 main().then(() => console.log("Setup database successfully!"))

@@ -110,8 +110,11 @@ async function handleWagerResultsUpdate(bettor: Document<unknown, {}, Bettor> & 
     const existingWagerCopy = {...wager.toObject()}
     const {amount, cashOutValue, odds, result} = data
     if (wager.result) {
-        if (amount || odds) {
-            return sender(undefined, "Cannot update the wager amount or odds after a result has been recorded")
+        if (amount && amount !== existingWagerCopy.amount) {
+            return sender(undefined, "Cannot update the wager amount after a result has been recorded")
+        }
+        if (odds && odds !== existingWagerCopy.odds) {
+            return sender(undefined, "Cannot update wager odds after a result has been recorded")
         }
     }
     if (amount) {
