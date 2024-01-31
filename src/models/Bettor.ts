@@ -33,7 +33,6 @@ const bettorSchema = new Schema({
     },
     createdAt: { type: Number, default: Date.now, required: true },
     balance: {type: Number, required: true},
-    wagers: [{type: Types.ObjectId, ref: ModelConstants.WAGER.modelName}],
     deposits: [depositSchema]
 }, {collection: ModelConstants.BETTOR.collectionName})
 

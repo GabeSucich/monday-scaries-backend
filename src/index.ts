@@ -7,7 +7,7 @@ import {config} from "./config"
 import "./passport-config"
 import api from "./routes"
 
-const mongoUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/mondayScaries"
+const mongoUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/volumeBets"
 
 mongoose.connect(mongoUrl)
 
@@ -25,7 +25,7 @@ import passport from 'passport';
 import models from "./models"
 
 app.use(session({
-  secret: process.env.EXPRESS_SECRET_KEY || 'your-secret-key',
+  secret: process.env.EXPRESS_SECRET_KEY || 'monday-scaries-day-1',
   resave: true,
   saveUninitialized: true
 }));

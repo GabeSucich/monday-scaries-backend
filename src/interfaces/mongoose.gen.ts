@@ -35,7 +35,6 @@ export type Bettor = {
   bettorGroup: BettorGroup["_id"] | BettorGroup;
   createdAt: number;
   balance: number;
-  wagers: (Wager["_id"] | Wager)[];
   deposits: BettorDeposit[];
   _id: mongoose.Types.ObjectId;
 };
@@ -127,7 +126,6 @@ export type BettorDocument = mongoose.Document<
     bettorGroup: BettorGroupDocument["_id"] | BettorGroupDocument;
     createdAt: number;
     balance: number;
-    wagers: mongoose.Types.Array<WagerDocument["_id"] | WagerDocument>;
     deposits: mongoose.Types.DocumentArray<BettorDepositDocument>;
     _id: mongoose.Types.ObjectId;
   };
