@@ -31,7 +31,20 @@ async function authenticateUserWagerAccess(user: User, wagerId: string): Promise
 }
 
 AuthenticatedRouterUtil.get(router, "/bettor/:_id", (req, send, user) => {
-    return WagerModel.find({bettor: req.params._id})
+    const startTimestamp = req.query.startTimestamp ? Number(req.query.startTimestamp) : undefined
+    const endTimestamp = req.query.endTimestamp ? Number(req.query.endTimestamp) : undefined
+    const query = {
+        bettor: req.params._id
+    }
+    if (startTimestamp) {
+        query["createdAt"] = {
+            $gte: startTimestamp
+        }
+    }
+    if (endTimestamp) { 
+        query["createdAt"] = {...(query["createdAt"] ?? {}), $lte: endTimestamp}
+    }
+    return WagerModel.find(query)
         .then(send<Wager[]>)
 })
 

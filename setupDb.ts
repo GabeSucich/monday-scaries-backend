@@ -6,10 +6,22 @@ import BettorGroupModel from "./src/models/BettorGroup";
 import WagerModel from "./src/models/Wager";
 
 import data from "./src/data.json"
+import users from "./src/users.json"
+
+export const config = {
+    local: "mongodb://127.0.0.1:27017/volumeBets",
+    dev: "mongodb+srv://mondayScaries-user:fQWARBE512jFtRKo@mondayscariesserverless.elhzdmd.mongodb.net/volumeBets-dev?retryWrites=true&w=majority",
+    live: "mongodb+srv://mondayScaries-user:fQWARBE512jFtRKo@mondayscariesserverless.elhzdmd.mongodb.net/volumeBets?retryWrites=true&w=majority"
+}
+
+const DB_TO_USE = config.live
 
 async function connectToDb() {
-    return await mongoose.connect("mongodb://127.0.0.1:27017/volumeBets")
-    // return await mongoose.connect("mongodb+srv://mondayScaries-user:fQWARBE512jFtRKo@mondayscariesserverless.elhzdmd.mongodb.net/mondayScaries-dev?retryWrites=true&w=majority")
+    
+    if (DB_TO_USE === config.live) {
+        throw "About to mess with live!"
+    }
+    return await mongoose.connect(DB_TO_USE)
 }
 
 async function findUser(username: string): Promise<User> {
@@ -18,6 +30,13 @@ async function findUser(username: string): Promise<User> {
         return user
     } else {
         throw "Cannot find user with username: " + username
+    }
+}
+
+async function setupUsers() {
+    for (const user of users) {
+        const u = await UserModel.create({...user, _id: user["_id"]["$oid"], createdAt: undefined})
+        u.save()
     }
 }
 
@@ -48,7 +67,7 @@ async function setupWagers(bettor: Bettor & Document<{}, {}, Bettor>, username: 
             payout = (odds >= 100 ? amount * odds / 100 : amount * 100 / Math.abs(odds)) + amount
             payout = parseFloat(payout.toFixed(2))
         } else if (result === "Cash Out") {
-            payout = wager["cashOutValue"] as number + amount
+            payout = wager["cashOutValue"] as number
         } else if (result === "Push") {
             payout = amount
         }
@@ -86,13 +105,16 @@ async function setupWagers(bettor: Bettor & Document<{}, {}, Bettor>, username: 
 
 async function main() {
     await connectToDb()
+    await UserModel.collection.drop()
     await BettorModel.collection.drop()
     await BettorModel.init()
     await BettorGroupModel.collection.drop()
     await BettorGroupModel.init()
     await WagerModel.collection.drop()
     await WagerModel.init()
+    await setupUsers()
     const gabeUser = await UserModel.findOne({username: "gsucich"})
+   
     const bettorGroup = await BettorGroupModel.create({
         adminBettor: gabeUser,
         maxDeposit: 100,

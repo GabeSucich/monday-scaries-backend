@@ -3,4 +3,6 @@ node_modules
 .DS_Store
 
 src/data.json
+src/users.json
 passwords.txt
+

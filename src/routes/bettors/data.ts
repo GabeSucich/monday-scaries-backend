@@ -1,3 +1,5 @@
+import { Bettor } from "../../interfaces/mongoose.gen";
+import { ModifiedUser } from "../auth/data";
 import { RequestBodyExtractor } from "../utilities";
 
 export type CreateDepositData = {
@@ -12,4 +14,9 @@ export function parseCreateDepositData(extractor: RequestBodyExtractor): CreateD
         bettor,
         amount
     }
+}
+
+export type BettorUserData = {
+    bettor: Bettor
+    user: ModifiedUser
 }

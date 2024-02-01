@@ -18,4 +18,5 @@ AuthenticatedRouterUtil.get(router, "/:_id", (req, send, user) => {
     })
 })
 
+
 export default router

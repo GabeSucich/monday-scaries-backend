@@ -8,5 +8,5 @@
       "esModuleInterop": true,
       "resolveJsonModule": true
     },
-    "exclude": ["./setupDb.ts", "./writeInterfaces.ts", "./node_modules"]
+    "exclude": ["./setupDb.ts", "./adjustWagerTimestamps.ts", "./addDeposits.ts", "./writeInterfaces.ts", "./node_modules"]
 }
