@@ -19,6 +19,6 @@ export const ModelConstants = {
         modelName: "Wager",
         collectionName: "wagers",
         betTypes: ["Game Total", "Money Line", "Against the Spread", "Prop", "Parlay", "Future", "Other"],
-        sports: ["NFL", "NBA", "PGA", "NCAA Basketball", "NCAA Football", "UFC", "Soccer", "Tennis", "Hockey", "Multi", "Other"]
+        sports: ["NFL", "NBA", "PGA", "NCAA Basketball", "NCAA Football", "NCAA Baseball", "MLB", "UFC", "Soccer", "Tennis", "Hockey", "Multi", "Other"]
     },
 }
