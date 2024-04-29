@@ -12,7 +12,9 @@ const bettorGroupSchema = new Schema({
     bettors: [{
         type: Types.ObjectId,
         ref: ModelConstants.BETTOR.modelName
-    }]
+    }],
+    startTimestamp: {type: Number},
+    endTimestamp: {type: Number}
 })
 
 const BettorGroupModel = model<BettorGroup>(ModelConstants.BETTOR_GROUP.modelName, bettorGroupSchema)

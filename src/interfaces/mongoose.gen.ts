@@ -18,6 +18,7 @@ import mongoose from "mongoose";
 export type BettorDeposit = {
   amount: number;
   isReBuy: boolean;
+  isQuarterlySupplement: boolean;
   createdAt: number;
   _id: mongoose.Types.ObjectId;
 };
@@ -105,6 +106,7 @@ export type BettorSchema = mongoose.Schema<
 export type BettorDepositDocument = mongoose.Types.Subdocument & {
   amount: number;
   isReBuy: boolean;
+  isQuarterlySupplement: boolean;
   createdAt: number;
   _id: mongoose.Types.ObjectId;
 };
@@ -145,6 +147,8 @@ export type BettorGroup = {
   maxDeposit: number;
   maxDepositBalance?: number;
   bettors: (Bettor["_id"] | Bettor)[];
+  startTimestamp?: number;
+  endTimestamp?: number;
   _id: mongoose.Types.ObjectId;
 };
 
@@ -232,6 +236,8 @@ export type BettorGroupDocument = mongoose.Document<
     maxDeposit: number;
     maxDepositBalance?: number;
     bettors: mongoose.Types.Array<BettorDocument["_id"] | BettorDocument>;
+    startTimestamp?: number;
+    endTimestamp?: number;
     _id: mongoose.Types.ObjectId;
   };
 

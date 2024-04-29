@@ -13,6 +13,11 @@ const depositSchema = new Schema({
         required: true,
         default: true
     },
+    isQuarterlySupplement: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     createdAt: {
         type: Number,
         default: Date.now,
